@@ -25,6 +25,32 @@ pub fn sum_square_difference(max_term: usize) -> usize {
     square_of_sum - sum_of_squares
 }
 
+pub fn sum_square_difference_o1(max_term: usize) -> usize {
+    sum(max_term).pow(2) - sum_of_squares(max_term)
+}
+
+/// $$
+/// \frac{n (n + 1)}{2}
+/// $$
+///
+/// # References
+///
+/// - <https://lucidmanager.org/data-science/project-euler-6/>
+pub fn sum(max_term: usize) -> usize {
+    max_term * (max_term + 1) / 2
+}
+
+/// $$
+/// \frac{n (n + 1) (2n + 1)}{6}
+/// $$
+///
+/// # References
+///
+/// - <https://lucidmanager.org/data-science/project-euler-6/>
+pub fn sum_of_squares(max_term: usize) -> usize {
+    max_term * (max_term + 1) * (2 * max_term + 1) / 6
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -34,12 +60,16 @@ mod tests {
         let max_term = 10;
         let diff = sum_square_difference(max_term);
         assert_eq!(diff, 2640);
+        let diff = sum_square_difference_o1(max_term);
+        assert_eq!(diff, 2640);
     }
 
     #[test]
     fn max_term_100() {
         let max_term = 100;
         let diff = sum_square_difference(max_term);
+        assert_eq!(diff, 25164150);
+        let diff = sum_square_difference_o1(max_term);
         assert_eq!(diff, 25164150);
     }
 }
