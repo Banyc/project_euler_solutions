@@ -29,10 +29,10 @@ pub fn largest_prime_factor(n: usize) -> Option<usize> {
 /// - <https://en.wikipedia.org/wiki/Primality_test>
 pub fn is_prime(n: usize) -> bool {
     // n = 0, 1, 2, 3, 4, 5, 6, 7, ...
-    if n == 0 {
+    if n == 0 || n == 1 {
         return false;
     }
-    // n = 1, 2, 3, 4, 5, 6, 7, 8, ...
+    // n = 2, 3, 4, 5, 6, 7, 8, ...
     if n < 4 {
         return true;
     }
